@@ -1,0 +1,22 @@
+;AddTwo.asm - adds two 32-bit integers.   
+;include Irvine32.inc   
+.386 ;x86 architecture   
+.model flat,stdcall   
+.stack 4096 ;4KB   
+ExitProcess proto,dwExitCode:dword     
+.data   
+a byte 5
+b byte 6
+.code  
+main proc  
+
+mov eax, offset a
+mov ebx, offset b
+xchg [ebx], eax
+dec ebx
+mov al,a
+mov bl,b
+inc ebx
+invoke ExitProcess,0   
+main endp   
+end main  
